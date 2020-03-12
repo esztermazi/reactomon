@@ -13,7 +13,9 @@ const NavBar = props => {
         <Nav.Item>
           <NavLink to="/pokemons">Pokemons</NavLink>
         </Nav.Item>
-        <Nav.Item></Nav.Item>
+        <Nav.Item>
+          <NavLink to="/types">Types</NavLink>
+        </Nav.Item>
       </Nav>
     </nav>
   );
