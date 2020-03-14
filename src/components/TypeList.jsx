@@ -1,22 +1,21 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import styled from 'styled-components';
+import './style/TypeList.css';
 
 const TypeList = props => {
-  const content = props.types.map(type =>
-    ['Light'].map((variant, idx) => (
-      <Card
-        bg={variant.toLowerCase()}
-        key={idx}
-        text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
-        style={{ width: '18rem' }}
-      >
-        <Card.Header>{type.name}</Card.Header>
-        <Card.Body>
-          <Card.Text>{type.url}</Card.Text>
-        </Card.Body>
-      </Card>
-    ))
-  );
+  const Section = styled.section`
+    color: purple;
+    background: ${props => props.background};
+    font-family: Pokemon Solid;
+  `;
+
+  const content = props.types.map(type => (
+    <div className="type-container">
+      <Section>
+        {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
+      </Section>
+    </div>
+  ));
   return content;
 };
 

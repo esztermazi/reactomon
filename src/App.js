@@ -12,17 +12,17 @@ const App = props => {
   const [pokemons, setPokemons] = useState([]);
   const [types, setTypes] = useState([]);
 
-  const getPokemons = () => {
-    axios
-      .get(`https://pokeapi.co/api/v2/pokemon`)
-      .then(res => setPokemons(res.data.results));
-  };
+  function getPokemons() {
+    return axios.get(`https://pokeapi.co/api/v2/pokemon`).then(res => {
+      setPokemons(res.data.results);
+    });
+  }
 
-  const getTypes = () => {
-    axios
-      .get(`https://pokeapi.co/api/v2/type`)
-      .then(res => setTypes(res.data.results));
-  };
+  function getTypes() {
+    return axios.get(`https://pokeapi.co/api/v2/type`).then(res => {
+      setTypes(res.data.results);
+    });
+  }
 
   useEffect(() => {
     getPokemons();
@@ -33,19 +33,19 @@ const App = props => {
     <Router>
       <React.Fragment>
         <NavBar />
+        <Route exact path="/" component={WelcomeMessage} />
         <div className="PokemonContainer">
-          <Route exact path="/" component={WelcomeMessage} />
           <Route
             exact
             path="/pokemons"
             render={props => <PokemonList pokemons={pokemons} />}
           />
-          <Route
-            exact
-            path="/types"
-            render={props => <TypeList types={types} />}
-          />
         </div>
+        <Route
+          exact
+          path="/types"
+          render={props => <TypeList types={types} />}
+        />
         <Route exact path="/pokemon/:name" component={PokemonCardFront} />
       </React.Fragment>
     </Router>

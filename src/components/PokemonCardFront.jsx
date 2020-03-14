@@ -18,7 +18,7 @@ const PokemonCardFront = props => {
         setName(
           res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
           setWeight(res.data.weight),
-          setHeight.data.height(),
+          setHeight(res.data.height),
           setBaseExperience(res.data.base_experience),
           setSprites(res.data.sprites),
           setCurrentSprite(res.data.sprites.back_default)
