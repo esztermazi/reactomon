@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import OpenPokeBall from '../resources/openpokeball.png';
 import Gotta from '../resources/gotta.png';
 import ClosedPokeBall from '../resources/closedpokeball.png';
-import './style/PokemonCard.css';
+import './style/PokemonCardBack.css';
 
 const PokemonCardBack = props => {
   const [backImg, setBackImg] = useState(ClosedPokeBall);

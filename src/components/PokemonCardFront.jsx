@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 import axios from 'axios';
-import './style/PokemonDetail.css';
+import './style/PokemonCardFront.css';
 
 const PokemonCardFront = props => {
   const [name, setName] = useState(null);

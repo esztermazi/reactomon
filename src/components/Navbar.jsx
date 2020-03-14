@@ -5,7 +5,7 @@ import { Nav, Badge, Button } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 
 const NavBar = props => {
-  return (
+  const content = (
     <nav>
       <Link to="/">
         <img className="logo" src={Logo} alt="icon" />
@@ -29,6 +29,7 @@ const NavBar = props => {
       </Nav>
     </nav>
   );
+  return content;
 };
 
 export default NavBar;
