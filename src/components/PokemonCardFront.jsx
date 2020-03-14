@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap';
 import Axios from 'axios';
 import './style/PokemonDetail.css';
 
-class PokemonDetail extends Component {
+class PokemonCardFront extends Component {
   state = {
     name: null,
     weight: null,
@@ -66,4 +66,4 @@ class PokemonDetail extends Component {
   }
 }
 
-export default PokemonDetail;
+export default PokemonCardFront;

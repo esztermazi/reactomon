@@ -4,7 +4,7 @@ import NavBar from './components/Navbar';
 import WelcomeMessage from './components/WelcomeMessage';
 import PokemonList from './components/PokemonList';
 import TypeList from './components/TypeList';
-import PokemonDetail from './components/PokemonDetail';
+import PokemonCardFront from './components/PokemonCardFront';
 import './App.css';
 import axios from 'axios';
 
@@ -46,7 +46,7 @@ const App = props => {
             render={props => <TypeList types={types} />}
           />
         </div>
-        <Route exact path="/pokemon/:name" component={PokemonDetail} />
+        <Route exact path="/pokemon/:name" component={PokemonCardFront} />
       </React.Fragment>
     </Router>
   );
