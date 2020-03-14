@@ -1,0 +1,23 @@
+.detailed-card {
+  margin-left: auto;
+  margin-right: auto;
+  width: 17rem;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  border-radius: 30px;
+  -webkit-box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  border-width: thin;
+  border-style: solid;
+  border-color: black;
+}
+
+.card-img {
+  height: 250px;
+  width: 250px;
+}

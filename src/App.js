@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
 import PokemonList from './components/PokemonList';
 import TypeList from './components/TypeList';
+import PokemonDetail from './components/PokemonDetail';
 import './App.css';
 import axios from 'axios';
 
@@ -27,7 +28,7 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <NavBar collectData={this.componentDidMount()} />
+          <NavBar />
           <div className="PokemonContainer">
             <Route
               exact
@@ -40,6 +41,7 @@ class App extends Component {
               render={props => <TypeList types={this.state.types} />}
             />
           </div>
+          <Route exact path="/pokemon/:name" component={PokemonDetail} />
         </React.Fragment>
       </Router>
     );
