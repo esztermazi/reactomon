@@ -1,9 +1,9 @@
 import React from 'react';
-import PokemonCard from './PokemonCard';
+import PokemonCardBack from './PokemonCardBack';
 
 const PokemonList = props => {
   const content = props.pokemons.map(pokemon => (
-    <PokemonCard pokemon={pokemon} key={pokemon.name} />
+    <PokemonCardBack pokemon={pokemon} key={pokemon.name} />
   ));
   return content;
 };

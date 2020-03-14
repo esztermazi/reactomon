@@ -1,69 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
-import Axios from 'axios';
+import axios from 'axios';
 import './style/PokemonDetail.css';
 
-class PokemonCardFront extends Component {
-  state = {
-    name: null,
-    weight: null,
-    height: null,
-    baseExperience: null,
-    sprites: [],
-    sprite: null
+const PokemonCardFront = props => {
+  const [name, setName] = useState(null);
+  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState(null);
+  const [baseExperience, setBaseExperience] = useState(null);
+  const [sprites, setSprites] = useState([]);
+  const [currentSprite, setCurrentSprite] = useState(null);
+
+  const getPokemonDetails = () => {
+    axios
+      .get(`${props.location.state.url}`)
+      .then(res =>
+        setName(
+          res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
+          setWeight(res.data.weight),
+          setHeight.data.height(),
+          setBaseExperience(res.data.base_experience),
+          setSprites(res.data.sprites),
+          setCurrentSprite(res.data.sprites.back_default)
+        )
+      );
   };
 
-  componentDidMount() {
-    Axios.get(`${this.props.location.state.url}`).then(res =>
-      this.setState({
-        name: res.data.name.charAt(0).toUpperCase() + res.data.name.slice(1),
-        weight: res.data.weight,
-        height: res.data.height,
-        baseExperience: res.data.base_experience,
-        sprites: res.data.sprites,
-        sprite: res.data.sprites.back_default
-      })
-    );
-  }
+  useEffect(() => {
+    getPokemonDetails();
+  });
 
-  handleMouseOver(view) {
+  const handleMouseOver = view => {
     if (view === 'front') {
-      this.setState({
-        sprite: this.state.sprites.front_default
-      });
+      setCurrentSprite(sprites.front_default);
     } else {
-      this.setState({
-        sprite: this.state.sprites.back_default
-      });
+      setCurrentSprite(sprites.back_default);
     }
-  }
+  };
 
-  render() {
-    return (
-      <Card className="detailed-card">
-        <div
-          onMouseOver={() => this.handleMouseOver('front')}
-          onMouseOut={() => this.handleMouseOver('back')}
-        >
-          <Card.Img
-            className="card-img"
-            variant="top"
-            src={`${this.state.sprite}`}
-          />
-        </div>
-        <Card.Footer>
-          <Card.Body>
-            <Card.Title>{this.state.name}</Card.Title>
-            <Card.Text>
-              <p>Weight: {this.state.weight}</p>
-              <p>Height: {this.state.height}</p>
-              <p>Experience: {this.state.baseExperience}</p>
-            </Card.Text>
-          </Card.Body>
-        </Card.Footer>
-      </Card>
-    );
-  }
-}
+  const content = (
+    <Card className="detailed-card">
+      <div
+        onMouseOver={() => handleMouseOver('front')}
+        onMouseOut={() => handleMouseOver('back')}
+      >
+        <Card.Img className="card-img" variant="top" src={`${currentSprite}`} />
+      </div>
+      <Card.Footer>
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>
+            <p>Weight: {weight}</p>
+            <p>Height: {height}</p>
+            <p>Experience: {baseExperience}</p>
+          </Card.Text>
+        </Card.Body>
+      </Card.Footer>
+    </Card>
+  );
+  return content;
+};
 
 export default PokemonCardFront;

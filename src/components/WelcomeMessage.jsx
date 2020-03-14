@@ -4,7 +4,7 @@ import { Image, Alert } from 'react-bootstrap';
 import './style/WelcomeMessage.css';
 
 const WelcomeMessage = props => {
-  return (
+  const content = (
     <div className="welcome-container">
       <Image
         src={Master}
@@ -17,6 +17,7 @@ const WelcomeMessage = props => {
       </Alert>
     </div>
   );
+  return content;
 };
 
 export default WelcomeMessage;
