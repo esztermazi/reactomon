@@ -1,0 +1,33 @@
+.cardback {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+  width: 16rem;
+  height: 25rem;
+  margin-bottom: 35px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 25px;
+  border-radius: 30px;
+  -webkit-box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 6px 7px 5px -4px rgba(0, 0, 0, 0.75);
+  border-width: thin;
+  border-style: solid;
+  border-color: black;
+  color: gold;
+  align-items: center;
+}
+
+.backcard-img {
+  height: 150px;
+  width: 150px;
+}
+
+.catchimg {
+  height: 70%;
+  width: 70%;
+}
