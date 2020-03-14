@@ -51,16 +51,15 @@ class PokemonDetail extends Component {
             src={`${this.state.sprite}`}
           />
         </div>
-        <Card.Body>
-          <Card.Title>{this.state.name}</Card.Title>
-          <Card.Text>
-            <p>Weight: {this.state.weight}</p>
-            <p>Height: {this.state.height}</p>
-            <p>Experience: {this.state.baseExperience}</p>
-          </Card.Text>
-        </Card.Body>
         <Card.Footer>
-          <small className="text-muted">Gotta catch' em all</small>
+          <Card.Body>
+            <Card.Title>{this.state.name}</Card.Title>
+            <Card.Text>
+              <p>Weight: {this.state.weight}</p>
+              <p>Height: {this.state.height}</p>
+              <p>Experience: {this.state.baseExperience}</p>
+            </Card.Text>
+          </Card.Body>
         </Card.Footer>
       </Card>
     );

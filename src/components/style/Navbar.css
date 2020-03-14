@@ -5,6 +5,10 @@ h1 {
   text-align: center;
 }
 
+.nav-item {
+  color: black;
+}
+
 .logo {
   display: block;
   margin: auto;

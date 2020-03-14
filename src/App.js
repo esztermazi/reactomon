@@ -1,51 +1,57 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/Navbar';
+import WelcomeMessage from './components/WelcomeMessage';
 import PokemonList from './components/PokemonList';
 import TypeList from './components/TypeList';
 import PokemonDetail from './components/PokemonDetail';
 import './App.css';
 import axios from 'axios';
 
-class App extends Component {
-  state = {
-    pokemons: [],
-    types: []
+const App = props => {
+  const [pokemons, setPokemons] = useState([]);
+  const [types, setTypes] = useState([]);
+
+  const getPokemons = () => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon`)
+      .then(res => setPokemons(res.data.results));
   };
 
-  async componentDidMount() {
-    const [firstResponse, secondResponse] = await Promise.all([
-      axios.get(`https://pokeapi.co/api/v2/pokemon`),
-      axios.get(`https://pokeapi.co/api/v2/type`)
-    ]);
-    this.setState({
-      pokemons: firstResponse.data.results,
-      types: secondResponse.data.results
-    });
-  }
+  const getTypes = () => {
+    axios
+      .get(`https://pokeapi.co/api/v2/type`)
+      .then(res => setTypes(res.data.results));
+  };
 
-  render() {
-    return (
-      <Router>
-        <React.Fragment>
-          <NavBar />
-          <div className="PokemonContainer">
-            <Route
-              exact
-              path="/pokemons"
-              render={props => <PokemonList pokemons={this.state.pokemons} />}
-            />
-            <Route
-              exact
-              path="/types"
-              render={props => <TypeList types={this.state.types} />}
-            />
-          </div>
-          <Route exact path="/pokemon/:name" component={PokemonDetail} />
-        </React.Fragment>
-      </Router>
-    );
-  }
-}
+  useEffect(() => {
+    getPokemons();
+    getTypes();
+  });
+
+  let content = (
+    <Router>
+      <React.Fragment>
+        <NavBar />
+        <div className="PokemonContainer">
+          <Route exact path="/" component={WelcomeMessage} />
+          <Route
+            exact
+            path="/pokemons"
+            render={props => <PokemonList pokemons={pokemons} />}
+          />
+          <Route
+            exact
+            path="/types"
+            render={props => <TypeList types={types} />}
+          />
+        </div>
+        <Route exact path="/pokemon/:name" component={PokemonDetail} />
+      </React.Fragment>
+    </Router>
+  );
+
+  return content;
+};
 
 export default App;
