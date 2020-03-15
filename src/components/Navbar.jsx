@@ -26,6 +26,14 @@ const NavBar = props => {
             </Button>
           </NavLink>
         </Nav.Item>
+        <Nav.Item className="nav-item nav-link">
+          <Button variant="warning">Switch Theme</Button>
+        </Nav.Item>
+        <Nav.Item>
+          <NavLink className="nav-item nav-link" to="/pokemons/catched">
+            <Button variant="warning">Catched</Button>
+          </NavLink>
+        </Nav.Item>
       </Nav>
     </nav>
   );

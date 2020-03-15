@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import OpenPokeBall from '../resources/openpokeball.png';
-import Gotta from '../resources/gotta.png';
 import ClosedPokeBall from '../resources/closedpokeball.png';
 import './style/PokemonCardBack.css';
 
@@ -38,11 +37,6 @@ const PokemonCardBack = props => {
             props.pokemon.name.slice(1)}
         </Card.Title>
       </Card.Body>
-      <Card.Footer className="float-right">
-        <Button>
-          <Image className="catchimg" src={Gotta} fluid />
-        </Button>
-      </Card.Footer>
     </Card>
   );
 

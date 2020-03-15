@@ -1,17 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import './style/TypeList.css';
+import axios from 'axios';
+
+const Section = styled.section`
+  color: purple;
+  background: ${props => props.background};
+  cursor: pointer;
+`;
 
 const TypeList = props => {
-  const Section = styled.section`
-    color: purple;
-    background: ${props => props.background};
-    font-family: Pokemon Solid;
-  `;
+  const [types, setTypes] = useState([]);
 
-  const content = props.types.map(type => (
+  function getTypes() {
+    return axios.get(`https://pokeapi.co/api/v2/type`).then(res => {
+      setTypes(res.data.results);
+    });
+  }
+
+  useEffect(() => {
+    getTypes();
+  });
+
+  const content = types.map(type => (
     <div className="type-container">
-      <Section>
+      <Section key={type.name}>
         {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
       </Section>
     </div>
